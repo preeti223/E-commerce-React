@@ -1,0 +1,133 @@
+/* src/components/Footer.css
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    font-size: 14px;
+  }
+  
+  .footer p {
+    margin: 5px 0;
+  }
+   */
+
+
+
+   /* Footer Container */
+.footer-container {
+  background-color: #f9f9f9;
+  padding: 50px;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+/* Newsletter Section */
+.newsletter h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.email-input {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.email-input input {
+  padding: 12px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+}
+
+.email-input button {
+  padding: 12px;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  border-left: none;
+  cursor: pointer;
+  border-radius: 0 5px 5px 0;
+}
+
+/* Footer Description */
+.footer-description {
+  max-width: 600px;
+  margin: 20px auto;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Contact Info */
+.contact-info p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+/* App Download Section */
+.app-download p {
+  margin-bottom: 10px;
+}
+
+.qr-code {
+  margin: 10px 0;
+}
+
+.store-buttons img {
+  width: 150px;
+  margin: 10px;
+}
+
+/* Footer Links */
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 20px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links ul li {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #777;
+}
+
+/* Social Icons */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+  font-size: 24px;
+}
+
+.social-icons i {
+  cursor: pointer;
+}
+
+/* Footer Bottom Section */
+.footer-bottom {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+.footer-bottom img {
+  width: 100px;
+}

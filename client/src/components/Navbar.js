@@ -1,13 +1,9 @@
 
-
-
-
 import React, { useState } from 'react';
 import { FaBars, FaSearch, FaUser, FaShoppingCart } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
-import LoginSignup from './LoginSignup'; // Import LoginSignup component
-import './Navbar.css'; // Navbar styles
-
+import LoginSignup from './LoginSignup'; 
+import './Navbar.css'; 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showLoginSignup, setShowLoginSignup] = useState(false); // Track modal visibility
@@ -26,9 +22,9 @@ function Navbar() {
     <>
       <header className="navbar">
         <div className="navbar-left">
-          <button className="hamburger" onClick={toggleMenu}>
+           <button className="hamburger" onClick={toggleMenu}>
             <FaBars />
-          </button>
+          </button> 
         </div>
 
         <nav className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
