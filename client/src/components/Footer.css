@@ -19,7 +19,7 @@
    /* Footer Container */
 .footer-container {
   background-color: #f9f9f9;
-  padding: 50px;
+  /* padding: 50px; */
   text-align: center;
   font-family: 'Arial', sans-serif;
   color: #333;
@@ -92,7 +92,7 @@
 
 .footer-links ul {
   list-style: none;
-  padding: 0;
+  /* padding: 0; */
 }
 
 .footer-links ul li {
@@ -117,7 +117,7 @@
 /* Footer Bottom Section */
 .footer-bottom {
   margin-top: 20px;
-  display: flex;
+  /* display: flex; */
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
