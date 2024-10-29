@@ -1,74 +1,115 @@
-
 import React, { useState } from 'react';
-import { FaBars, FaSearch, FaUser, FaShoppingCart } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router-dom';
-import LoginSignup from './LoginSignup'; 
-import './Navbar.css'; 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import './Navbar.css';
+
 function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showLoginSignup, setShowLoginSignup] = useState(false); // Track modal visibility
+    const [searchQuery, setSearchQuery] = useState('');
+    const [isLoginOpen, setIsLoginOpen] = useState(false);
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [error, setError] = useState(''); 
 
-  const navigate = useNavigate();
+    const handleSearch = (e) => {
+        e.preventDefault();
+        console.log('Searching for:', searchQuery);
+    };
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+    const toggleLogin = () => {
+        setIsLoginOpen(!isLoginOpen);
+        setError('');
+    };
 
-  const handleSearchClick = () => navigate('/search');
-  const handleCartClick = () => navigate('/cart');
-  const handleUserClick = () => setShowLoginSignup(true); // Open modal
+    const handleLogin = (e) => {
+        e.preventDefault();
+       
+        if (!username || !password) {
+            setError('Please fill in both fields.'); 
+            return; 
+        }
+        // Simulate API call for authentication
+        console.log('Logging in with:', { username, password });
+        setIsAuthenticated(true);
+        setIsLoginOpen(false); 
+        setUsername(''); 
+        setPassword(''); 
+    };
 
-  const closeModal = () => setShowLoginSignup(false); // Close modal
+    const handleLogout = () => {
+        setIsAuthenticated(false);
+        setUsername('');
+        setPassword('');
+    };
 
-  return (
-    <>
-      <header className="navbar">
-        <div className="navbar-left">
-           <button className="hamburger" onClick={toggleMenu}>
-            <FaBars />
-          </button> 
+    return (
+        <div className='navbar'>
+            <div>
+            <img src="https://www.ktmcty.com/frontend/assets/media/general/logo.webp" alt="" className='logo' />
+            </div>
+
+            <div>
+            <ul>
+                <li>For Him</li>
+                <li>For Her</li>
+            </ul>
+            </div>
+
+            <div className='s-p'>
+            <form onSubmit={handleSearch} className="search-Bar">
+                <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="Search"
+                    className="search-input"
+                />
+                <button type="submit" className="search-button" ><FontAwesomeIcon icon={faMagnifyingGlass} size="1x" /></button> 
+               
+            </form>
+
+            
+            <div className="profile-icon" onClick={toggleLogin}>
+                <FontAwesomeIcon icon={faUserCircle} size="2x" />
+            </div>
+
+        
+            {isLoginOpen && (
+                <div className="login-modal-overlay">
+                    <div className="login-modal">
+                        <button className="close-modal" onClick={toggleLogin}>×</button>
+                        <form onSubmit={handleLogin}>
+                            <h2>Login</h2>
+                            <input
+                                type="text"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                                placeholder="Username"
+                                required
+                            />
+                            <input
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                placeholder="Password"
+                                required
+                            />
+                            {error && <div className="error-message">{error}</div>} 
+                            <button type="submit">Login</button>
+                        </form>
+                    </div>
+                </div>
+            )}
+
+            {isAuthenticated && (
+                <div className="welcome-message">
+                    <p>Welcome, {username}!</p>
+                    <button onClick={handleLogout}>Logout</button>
+                </div>
+            )}
+            </div>
         </div>
-
-        <nav className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
-          <Link to="/">For Him</Link>
-          <Link to="/for-her">For Her</Link>
-        </nav>
-
-        <Link to="/" className="logo">
-          <img
-            src="https://www.ktmcty.com/frontend/assets/media/general/logo.webp"
-            alt="logo"
-          />
-        </Link>
-
-        <div className="navbar-center">
-          <Link to="/offers">Tihar Offer</Link>
-          <Link to="/new-arrivals">New Arrivals</Link>
-        </div>
-
-        <div className="navbar-right">
-          <button className="icon-btn" onClick={handleSearchClick}>
-            <FaSearch className="icon" />
-          </button>
-          <button className="icon-btn" onClick={handleUserClick}>
-            <FaUser className="icon" />
-          </button>
-          <button className="icon-btn" onClick={handleCartClick}>
-            <FaShoppingCart className="icon" />
-          </button>
-        </div>
-      </header>
-
-      {showLoginSignup && (
-        <div className="modal-overlay" onClick={closeModal}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <LoginSignup />
-            <button className="close-btn" onClick={closeModal}>
-              Close
-            </button>
-          </div>
-        </div>
-      )}
-    </>
-  );
+    );
 }
 
 export default Navbar;

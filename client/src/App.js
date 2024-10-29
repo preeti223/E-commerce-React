@@ -14,7 +14,7 @@ function App() {
   // Fetch products from API
   const getAllProducts = async () => {
     try {
-      const { data } = await axios.get('/api/v1/product/get-product');
+      const { data } = await axios.get('http://localhost:8000/api/v1/product/get-product');
       setProducts(data.products);
       setIsLoaded(true);
     } catch (err) {
@@ -37,14 +37,12 @@ function App() {
               path="/"
               element={
                 <div className="home-page">
-                  {/* Offers Section */}
+                 
+                 
                   <div className="offer">
-                    <h4><strong>MONSOON SALE! 20% OFF ON ALL APPARELS</strong></h4>
+                    <h4><strong>Our Product</strong></h4>
                   </div>
-                  <div className="offer">
-                    <h4><strong>This Month we will be contributing 5% of our profits to charity, orphanage, and old age homes.</strong></h4>
-                  </div>
-
+{/*  */}
                   {/* Product List Section */}
                   <div className={`fullprod ${isLoaded ? 'loaded' : ''}`}>
                     <div className="pcards">
