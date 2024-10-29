@@ -23,13 +23,13 @@ const Footer = () => {
   return (
     <footer className="footer-container">
       {/* Newsletter Section */}
-      <div className="newsletter">
+      {/* <div className="newsletter">
         <h2>Subscribe to our Newsletter</h2>
         <div className="email-input">
           <input type="email" placeholder="Enter your email" />
           <button type="submit">&#10148;</button>
         </div>
-      </div>
+      </div> */}
 
       {/* Footer Description */}
       <p className="footer-description">
