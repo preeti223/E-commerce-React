@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 function Navbar() {
@@ -50,8 +51,8 @@ function Navbar() {
 
             <div>
             <ul>
-                <li>For Him</li>
-                <li>For Her</li>
+                <li><Link to="/">For Him</Link></li> 
+                <li><Link to="/forher">For Her</Link></li> 
             </ul>
             </div>
 

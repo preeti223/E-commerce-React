@@ -1,18 +1,4 @@
-// // src/components/Footer.js
-// import React from 'react';
-// import './Footer.css'; // Import styling
 
-// const Footer = () => {
-//   return (
-//     <footer className="footer">
-//       <p>&copy; 2024 KTM City. All rights reserved.</p>
-//       <p>Contact: support@ktmcity.com | +977-01-1234567</p>
-//       <p>Location: Kathmandu, Nepal</p>
-//     </footer>
-//   );
-// };
-
-// export default Footer;
 
 
 
@@ -22,15 +8,8 @@ import './Footer.css';
 const Footer = () => {
   return (
     <footer className="footer-container">
-      {/* Newsletter Section */}
-      {/* <div className="newsletter">
-        <h2>Subscribe to our Newsletter</h2>
-        <div className="email-input">
-          <input type="email" placeholder="Enter your email" />
-          <button type="submit">&#10148;</button>
-        </div>
-      </div> */}
-
+    
+      
       {/* Footer Description */}
       <p className="footer-description">
         At KTM CTY, we are passionate about making you feel stylish and comfortable. 

@@ -66,6 +66,7 @@
   margin: 10px 0;
   padding: 10px;
   text-align: center;
+  font-size: 2rem;
 }
 
 /* Product List Container */
@@ -81,7 +82,7 @@
 .pcard {
   width: 236px;
   height: 441px;
-   border: 1px solid #ddd; 
+   border: 2px solid #ddd; 
   background-color: #fff;
   display: flex;
   flex-direction: column;
@@ -182,3 +183,4 @@ footer {
   bottom: 0;
   width: 100%;
 }
+

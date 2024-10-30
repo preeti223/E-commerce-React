@@ -8,7 +8,14 @@
   padding: 10px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   background-color: #F8F9FA;
+  z-index: 1; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
 }
+
 .navbar ul{
   list-style: none;
   font-size: 1rem;
@@ -18,14 +25,25 @@
   gap: 20px;
   margin: 0;
   padding: 0;
+  margin-right: 20px;
 }
 .navbar li{
+  list-style: none;
   padding: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 .navbar li:hover{
   background-color: #ddd;
+}
+.navbar ul li a {
+  text-decoration: none; 
+  color: inherit; 
+}
+
+.navbar ul li a:hover {
+  text-decoration: none; 
+  color: #000; 
 }
 .search-bar{
   display: flex;
@@ -102,5 +120,6 @@
 
 .s-p{
   display: flex;
-  gap: 10px;
+  gap: 16px;
+  margin-right: 20px;
 }

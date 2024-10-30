@@ -3,7 +3,12 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Banner from './components/Banner';
+import ProductList from './components/ProductList';
+import Forher from './components/Forher';
+import Forhim from './components/Forhim';
 import Footer from './components/Footer'; // Import Footer
+
 
 import axios from 'axios';
 import './App.css'; // Import global styles
@@ -32,6 +37,8 @@ function App() {
     <Router>
       <div className="app-container"> {/* Main Container */}
         <Navbar />
+        <Banner/>
+        <ProductList/>
         <div className="content-wrapper">
           <Routes>
             <Route
@@ -74,12 +81,16 @@ function App() {
                 </div>
               }
             />
+                
             {/* Other Routes */}
-            <Route path="/offers" element={<div>Tihar Offers Page</div>} />
-            <Route path="/new-arrivals" element={<div>New Arrivals Page</div>} />
-            <Route path="/account" element={<div>My Account Page</div>} />
+            <Route path="/forher" element={<Forher />} />
+            <Route path="/forhim" element={<Forhim />} />
+
+            
+      
           </Routes>
         </div>
+
         <Footer /> 
       </div>
     </Router>

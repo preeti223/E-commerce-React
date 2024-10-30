@@ -1,0 +1,23 @@
+
+
+.banner{
+  
+    background-image: url('bannerimage.jpg');
+    /* background-size: cover; */
+    background-position: center;
+    align-items: center;
+    color: rgb(70, 67, 67);
+    text-align: center;
+    
+  }
+  .banner h1{
+    font-size: 3.6rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-left: 95px;
+  }
+  .banner p{
+    font-size: 2.2rem;
+    margin-left: 75px;
+    
+  } 
+
