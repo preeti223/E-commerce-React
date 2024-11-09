@@ -1,49 +1,76 @@
-import React, { useState } from 'react';
 
-const ProductList = () => {
-  // Sample price list (You can fetch this from an API)
-  const [products, setProducts] = useState([
-    { id: 1, name: 'Product 1', price: 100 },
-    { id: 2, name: 'Product 2', price: 50 },
-    { id: 3, name: 'Product 3', price: 150 },
-    { id: 4, name: 'Product 4', price: 75 },
-  ]);
+import React from 'react';
+import { Link } from 'react-router-dom'; 
+import './ProductList.css';
 
-  const [sortOrder, setSortOrder] = useState('high-to-low'); // Default sort order
-
-  // Sorting function
-  const sortProducts = (order) => {
-    const sortedProducts = [...products].sort((a, b) => {
-      return order === 'high-to-low' ? b.price - a.price : a.price - b.price;
-    });
-    setProducts(sortedProducts);
+const ProductList = ({ products, handleSortChange, sortOption }) => {
+  const sortedProducts = () => {
+    // Sorting logic
+    if (sortOption === 'priceLowHigh') {
+      return [...products].sort((a, b) => a.price - b.price);
+    } else if (sortOption === 'priceHighLow') {
+      return [...products].sort((a, b) => b.price - a.price);
+    } else if (sortOption === 'alphabetical') {
+      return [...products].sort((a, b) => a.name.localeCompare(b.name));
+    }
+    return products;
   };
 
-  // Handle change in sorting order
-  const handleSortChange = (e) => {
-    const order = e.target.value;
-    setSortOrder(order);
-    sortProducts(order);
+  const filteredProducts = () => {
+    // Filter logic for categories
+    if (sortOption === 'bags') {
+      return products.filter(product => product.category.name.toLowerCase() === 'bags');
+    } else if (sortOption === 'apparels') {
+      return products.filter(product => product.category.name.toLowerCase() === 'apparels');
+    } else if (sortOption === 'techpack') {
+      return products.filter(product => product.category.name.toLowerCase() === 'techpack');
+    }
+    return sortedProducts();
   };
 
   return (
-    <div>
-      <h2>Product List</h2>
+    <div className='Sorted-list'>
 
-      {/* Sorting Dropdown */}
-      <select value={sortOrder} onChange={handleSortChange}>
-        <option value="high-to-low">Price: High to Low</option>
-        <option value="low-to-high">Price: Low to High</option>
-      </select>
+      <div className='sort-category'>
+      <div>
+        <label htmlFor="sort">Sort by: </label>
+        <select id="sort" onChange={handleSortChange} value={sortOption}>
+          <option value="">Select</option>
+          <option value="priceLowHigh">Price: Low to High</option>
+          <option value="priceHighLow">Price: High to Low</option>
+          <option value="alphabetical">Alphabetical</option>
+        </select>
+      </div>
 
-      {/* Displaying Product List */}
-      <ul>
-        {products.map((product) => (
-          <li key={product.id}>
-            {product.name} - ${product.price}
-          </li>
-        ))}
-      </ul>
+      <div>
+        <label htmlFor="category">Category: </label>
+        <select id="category" onChange={handleSortChange} value={sortOption}>
+          <option value="">Select</option>
+          <option value="bags">Bags</option>
+          <option value="apparels">Apparels</option>
+          <option value="techpack">Techpack</option>
+        </select>
+      </div>
+      </div>
+
+      {/* Section for sorted and filtered products */}
+      <div className="product-grid">
+        {/* <h2>Products</h2> */}
+        {filteredProducts().length > 0 ? (
+          filteredProducts().map((product) => (
+            <Link to={'/product/${product._id}'} key={product._id} className="product-card">
+              {/* <h3>{product.name}</h3> */}
+              <img src={product.photo} alt={product.name} style={{ width: '200px', height: 'auto' }} />
+              <h3>{product.name}</h3>
+              <p>Price: ${product.price}</p>
+              {/* <p>Category: {product.category.name}</p>  */}
+              {/* Display category */}
+            </Link>
+          ))
+        ) : (
+          <p>No products available in this category.</p>
+        )}
+      </div>
     </div>
   );
 };

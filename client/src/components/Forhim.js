@@ -1,69 +1,63 @@
 
 
 import React, { useEffect, useState } from 'react';
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import axios from 'axios';
 
+import './Forhim.css';
 
-function Forhim() {
-    const [products, setProducts] = useState([]);
-    const [isLoaded, setIsLoaded] = useState(false);
-  
-    // Fetch products from API
-    const getAllProducts = async () => {
-      try {
-        const { data } = await axios.get('http://localhost:8000/api/v1/product/get-product');
-        setProducts(data.products);
-        setIsLoaded(true);
-      } catch (err) {
-        console.error('Error fetching products:', err);
-      }
-    };
-  
-    // Fetch products on component mount
-    useEffect(() => {
-      getAllProducts();
-    }, []);
+function ForHim() {
+  const [products, setProducts] = useState([]);
 
-return(
-    <div>
-   
-          <div className="offer">
-            <h4><strong>Him Product</strong></h4>
+  useEffect(() => {
+    fetch('http://localhost:8000/api/v1/product/get-product')
+      .then(response => response.json())
+      .then(data => {
+        // List of specific product IDs for "Him" products
+      
+        const himProductIds = [
+          "66f781426673173d872defc8",
+          "66f780b76673173d872def9b",
+          "66f77ee26673173d872def6e",
+          "66f6e97e6e8871137d1f900a",
+        ];
+
+        // Filter products based on whethim their '_id' matches the list
+        const himProducts = data.products.filter(product =>
+          himProductIds.includes(product._id)
+        );
+
+        setProducts(himProducts);
+      })
+      .catch(error => console.error('Error fetching products:', error));
+  }, []);
+
+  return (
+    
+    <div >
+      
+      <div className='product-category'>
+      <h1>Him Product</h1>
+      </div>
+
+      <div  className="for-him-container">
+      {products.length > 0 ? (
+        products.map(product => (
+          <div key={product._id} className="product-card">
+           
+            <img 
+              src={product.photo} 
+              alt={product.name} 
+              className="product-image" 
+            />
+             <h2>{product.name}</h2>
+             <p>Price: ${product.price}</p>
           </div>
-
-<div className={`fullprod ${isLoaded ? 'loaded' : ''}`}>
-                    <div className="pcards">
-                      {products.map((p, index) => (
-                        <div className="pcard" key={index}>
-                          <div className="pimg">
-                            <img
-                              src={p.photo}
-                              alt="Product"
-                              className="default-photo"
-                            />
-                            <img
-                              src={p.photo1}
-                              alt="Product on hover"
-                              className="hover-photo"
-                            />
-                          </div>
-                          <div className="pdets">
-                            <h4><strong>{p.name}</strong></h4>
-                            <p className="priceofdetail">
-                              <s>Rs.{p.price + 200}.-</s> <strong>Rs.{p.price}/-</strong>
-                            </p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  
-        </div>
-                  
-);
+        ))
+      ) : (
+        <p>No products found for 'Him'.</p>
+      )}
+      </div>
+    </div>
+  );
 }
 
-export default Forhim;
-
-
+export default ForHim;

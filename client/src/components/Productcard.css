@@ -1,0 +1,19 @@
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    width: 200px; /* Fixed width for the cards */
+  }
+  
+  .product-image {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .color-image {
+    width: 20px; /* Adjust size of color indicators */
+    height: 20px;
+    margin: 0 2px;
+  }
+  

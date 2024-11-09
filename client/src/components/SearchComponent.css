@@ -1,0 +1,15 @@
+.search-container{
+
+    margin : 20px 0 10px 20px;
+}
+
+.product-image {
+    width: 100%; 
+    max-width: 300px;  
+    height: auto;  
+}
+
+.color-image {
+    width: 40px;  
+    height: auto; 
+}

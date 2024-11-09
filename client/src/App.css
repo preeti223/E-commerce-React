@@ -142,8 +142,7 @@
    display: flex; 
    flex-wrap: wrap;
    gap: 5rem; 
-   margin-right: 50px;
-   margin-left: 50px;
+   justify-content: space-between;
 }
 
 

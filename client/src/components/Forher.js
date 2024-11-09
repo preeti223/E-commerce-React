@@ -1,69 +1,63 @@
 
 
 import React, { useEffect, useState } from 'react';
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import axios from 'axios';
 
+import './Forher.css';
 
-function Forher() {
-    const [products, setProducts] = useState([]);
-    const [isLoaded, setIsLoaded] = useState(false);
-  
-    // Fetch products from API
-    const getAllProducts = async () => {
-      try {
-        const { data } = await axios.get('http://localhost:8000/api/v1/product/get-product');
-        setProducts(data.products);
-        setIsLoaded(true);
-      } catch (err) {
-        console.error('Error fetching products:', err);
-      }
-    };
-  
-    // Fetch products on component mount
-    useEffect(() => {
-      getAllProducts();
-    }, []);
+function ForHer() {
+  const [products, setProducts] = useState([]);
 
-return(
-    <div>
-   
-          <div className="offer">
-            <h4><strong>Her Product</strong></h4>
+  useEffect(() => {
+    fetch('http://localhost:8000/api/v1/product/get-product')
+      .then(response => response.json())
+      .then(data => {
+        // List of specific product IDs for "Her" products
+      
+        const herProductIds = [
+           "66b32185e0ae59c9288c5274",
+          "66b3279337853f81875d617d",
+          "66b329721a333d345d8aa9b9",
+          "66bf09a156d3c1114cd83368",
+        ];
+
+        // Filter products based on whether their '_id' matches the list
+        const herProducts = data.products.filter(product =>
+          herProductIds.includes(product._id)
+        );
+
+        setProducts(herProducts);
+      })
+      .catch(error => console.error('Error fetching products:', error));
+  }, []);
+
+  return (
+    
+    <div >
+      
+      <div className='product-category'>
+      <h1>Her Product</h1>
+      </div>
+
+      <div  className="for-her-container">
+      {products.length > 0 ? (
+        products.map(product => (
+          <div key={product._id} className="product-card">
+           
+            <img 
+              src={product.photo} 
+              alt={product.name} 
+              className="product-image" 
+            />
+             <h2>{product.name}</h2>
+             <p>Price: ${product.price}</p>
           </div>
-
-<div className={`fullprod ${isLoaded ? 'loaded' : ''}`}>
-                    <div className="pcards">
-                      {products.map((p, index) => (
-                        <div className="pcard" key={index}>
-                          <div className="pimg">
-                            <img
-                              src={p.photo}
-                              alt="Product"
-                              className="default-photo"
-                            />
-                            <img
-                              src={p.photo1}
-                              alt="Product on hover"
-                              className="hover-photo"
-                            />
-                          </div>
-                          <div className="pdets">
-                            <h4><strong>{p.name}</strong></h4>
-                            <p className="priceofdetail">
-                              <s>Rs.{p.price + 200}.-</s> <strong>Rs.{p.price}/-</strong>
-                            </p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  
-        </div>
-                  
-);
+        ))
+      ) : (
+        <p>No products found for 'Her'.</p>
+      )}
+      </div>
+    </div>
+  );
 }
 
-export default Forher;
-
-
+export default ForHer;
