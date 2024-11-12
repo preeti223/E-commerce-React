@@ -1,4 +1,3 @@
-// ProductDetail.js
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -11,21 +10,35 @@ const ProductDetail = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/v1/product/get-product/${id}`); // Adjust the API endpoint as needed
-        setProduct(response.data); // Adjust according to your API response structure
-        setLoading(false);
+        // Log the id to make sure it's correct
+        console.log('Product ID:', id);
+
+        // Make the API request
+        const response = await axios.get(`http://localhost:8000/api/v1/product/get-product/${id}`);
+        console.log('Product response:', response); // Log the full response for debugging
+
+        // Check if the response contains a valid product
+        if (response.data && response.data._id) {
+          setProduct(response.data); // Set product if response is valid
+        } else {
+          console.error('Product data is not found:', response);
+          setProduct(null); // Set product as null if not found
+        }
+        setLoading(false); // Set loading to false once data is fetched
       } catch (error) {
         console.error('Error fetching product details:', error);
-        setLoading(false);
+        setLoading(false); // Set loading to false if there is an error
       }
     };
 
-    fetchProduct();
+    fetchProduct(); // Fetch product when component mounts or id changes
   }, [id]);
 
+  // Handle loading and missing product states
   if (loading) return <p>Loading...</p>;
   if (!product) return <p>Product not found.</p>;
 
+  // Render product details once data is available
   return (
     <div className="product-detail">
       <h2>{product.name}</h2>

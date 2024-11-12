@@ -12,34 +12,19 @@ const Footer = () => {
       
       {/* Footer Description */}
       <p className="footer-description">
-        At KTM CTY, we are passionate about making you feel stylish and comfortable. 
+        At Him&Her, we are passionate about making you feel stylish and comfortable. 
         From providing high quality products to maintaining an amiable environment in 
         the stores, we make sure that you look good and feel good. Hope you have a 
-        stress-free shopping experience at KTM CTY.
+        stress-free shopping experience at him&her.
       </p>
 
       {/* Contact Information */}
       <div className="contact-info">
         <p>TEL: 01-4584447</p>
         <p>MOB: 01-4485453</p>
-        <p>INFO@KTMCITY.ORG</p>
+        <p>INFO@him&her.org</p>
       </div>
 
-      {/* App Download Section */}
-      <div className="app-download">
-        <p>Download App</p>
-        <img src="https://www.ktmcty.com/frontend/assets/media/app_qrcode.png" alt=""></img>
-        <div className="store-buttons">
-          <img 
-            src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" 
-            alt="App Store" 
-          />
-          <img 
-            src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" 
-            alt="Google Play" 
-          />
-        </div>
-      </div>
 
       {/* Footer Links */}
       <div className="footer-links">
@@ -66,7 +51,7 @@ const Footer = () => {
 
       {/* Footer Bottom Section */}
       <div className="footer-bottom">
-        <p>© 2024 KTM CTY ® All Rights Reserved</p>
+        <p>© 2024 HIM&HER ® All Rights Reserved</p>
         
       </div>
     </footer>

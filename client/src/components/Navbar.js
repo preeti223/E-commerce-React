@@ -59,12 +59,12 @@ function Navbar() {
             </div>
 
             <div>
-                <nav>
-                 <ul>
-                  <Link to="/forhim"> <li>For Him</li> </Link>
-                  <Link to="/forher"> <li>For Her</li> </Link>
-                </ul>
-                </nav>
+            <nav className='nav-links'>
+        <ul>
+          <Link to="/forhim"><li>For Him</li></Link>
+          <Link to="/forher"><li>For Her</li></Link>
+        </ul>
+      </nav>
             </div>
 
             <div className='s-p'>
